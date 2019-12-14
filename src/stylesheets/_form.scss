@@ -16,7 +16,7 @@
       border-bottom: none;
 
       img {
-        width: 200px;
+        width: 120px;
       }
     }
   }
@@ -26,9 +26,9 @@
   }
 
   .input-sheet__banner {
-    background-image: url('/images/tech-radar-landing-page-wide.png');
+    /*background-image: url('/images/tech-radar-landing-page-wide.png');*/
     background-repeat: no-repeat;
-    background-color: $grey-light;
+    background-color: $spd-red;
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -43,6 +43,8 @@
     }
     p, h1 {
       color: $white;
+      font-weight: 600;
+      letter-spacing: -.04em;
     }
 
     a {
