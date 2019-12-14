@@ -221,8 +221,8 @@ const GoogleSheetInput = function () {
 
       plotLogo(content)
 
-      var bannerText = '<div><h1>Build your own radar</h1><p>Once you\'ve <a href ="https://www.thoughtworks.com/radar/byor">created your Radar</a>, you can use this service' +
-        ' to generate an <br />interactive version of your Technology Radar. Not sure how? <a href ="https://www.thoughtworks.com/radar/how-to-byor">Read this first.</a></p></div>'
+      var bannerText = '<div><h1>Gestalte unsere Zukunft</h1><p>Sobald Du <a href ="https://frankgoossens.dev.acsr.de/radar/guez">unsere Zukunftsthemen erfasst hast</a>, kannst Du unseren Visualisierungsservice nutzen,' +
+        ' um eine <br />interaktive Version unseres Zukunfts Radars zu bauen. <a href ="https://frankgoossens.dev.acsr.de/radar/how-to-guez">So wird es gemacht!</a></p></div>'
 
       plotBanner(content, bannerText)
 
@@ -236,7 +236,7 @@ const GoogleSheetInput = function () {
 }
 
 function setDocumentTitle () {
-  document.title = 'Build your own Radar'
+  document.title = 'Gestalte unsere Zukunft'
 }
 
 function plotLoading (content) {
@@ -250,7 +250,7 @@ function plotLoading (content) {
 
   plotLogo(content)
 
-  var bannerText = '<h1>Building your radar...</h1><p>Your Technology Radar will be available in just a few seconds</p>'
+  var bannerText = '<h1>Wir bauen unsere Zukunft...</h1><p>Dein Radar wird in ein paar Sekunden verfügbar sein</p>'
   plotBanner(content, bannerText)
   plotFooter(content)
 }
@@ -258,7 +258,7 @@ function plotLoading (content) {
 function plotLogo (content) {
   content.append('div')
     .attr('class', 'input-sheet__logo')
-    .html('<a href="https://www.acsr.de"><img src="./images/acsr-logo.png" / ></a>')
+    .html('<a href="https://frankgoossens.de"><img src="./images/spd-tdf-logo.png" / ></a>')
 }
 
 function plotFooter (content) {
@@ -268,10 +268,10 @@ function plotFooter (content) {
     .append('div')
     .attr('class', 'footer-content')
     .append('p')
-    .html('Powered by <a href="http://www.acsr.de"> acsr industrialdesign</a>. '
-    + 'By using this service you agree to <a href="http://www.acsr.de">acsr\' terms of use</a>. '
-    + 'You also agree to our <a href="http://www.acsr.de/privacy-policy">privacy policy</a>, which describes how we will gather, use and protect any personal data contained in your public Google Sheet. '
-    + 'This software is <a href="https://github.com/thoughtworks/build-your-own-radar">open source</a> and available for download and self-hosting.')
+    .html('Powered by <a href="http://www.acsr.de"> acsr industrialdesign</a>. ' +
+    'By using this service you agree to <a href="http://www.acsr.de">acsr\' terms of use</a>. ' +
+    'You also agree to our <a href="http://www.acsr.de/privacy-policy">privacy policy</a>, which describes how we will gather, use and protect any personal data contained in your public Google Sheet. ' +
+    'This software is <a href="https://github.com/thoughtworks/build-your-own-radar">open source</a> and available for download and self-hosting.')
 }
 
 function plotBanner (content, text) {
@@ -284,7 +284,7 @@ function plotForm (content) {
   content.append('div')
     .attr('class', 'input-sheet__form')
     .append('p')
-    .html('<strong>Enter the URL of your <a href="https://www.thoughtworks.com/radar/how-to-byor" target="_blank">Google Sheet or CSV</a> file below…</strong>')
+    .html('<strong>Trage die URL deiner <a href="https://frankgoossens.dev.acsr.de/radar/how-to-guez"" target="_blank">Google Tabelle oder CSV</a> Datei hier unten ein…</strong>')
 
   var form = content.select('.input-sheet__form').append('form')
     .attr('method', 'get')
@@ -301,11 +301,11 @@ function plotForm (content) {
     .attr('class', 'button')
     .text('Build my radar')
 
-  form.append('p').html("<a href='https://www.thoughtworks.com/radar/how-to-byor'>Need help?</a>")
+  form.append('p').html("<a href='https://frankgoossens.dev.acsr.de/radar/how-to-guez'>Benötigst Du Hilfe?</a>")
 }
 
 function plotErrorMessage (exception) {
-  var message = 'Oops! It seems like there are some problems with loading your data. '
+  var message = 'Mist. Leider gab ein paar Probleme beim Laden Deiner Daten. '
 
   var content = d3.select('body')
     .append('div')
@@ -314,14 +314,14 @@ function plotErrorMessage (exception) {
 
   plotLogo(content)
 
-  var bannerText = '<div><h1>Build your own radar</h1><p>Once you\'ve <a href ="https://www.thoughtworks.com/radar/byor">created your Radar</a>, you can use this service' +
-    ' to generate an <br />interactive version of your Technology Radar. Not sure how? <a href ="https://www.thoughtworks.com/radar/how-to-byor">Read this first.</a></p></div>'
+  var bannerText = '<div><h1>Gestalte unsere Zukunft</h1><p>Sobald Du <a href ="https://frankgoossens.dev.acsr.de/radar/guez">unsere Zukunftsthemen erfasst hast</a>, kannst Du unseren Visualisierungsservice nutzen,' +
+  ' um eine <br />interaktive Version unseres Zukunfts Radars zu bauen. <a href ="https://frankgoossens.dev.acsr.de/radar/how-to-guez">Bitte zuerst lesen wie es gemacht wird!</a></p></div>'
 
   plotBanner(content, bannerText)
 
   d3.selectAll('.loading').remove()
-  message = "Oops! We can't find the Google Sheet you've entered"
-  var faqMessage = 'Please check <a href="https://www.thoughtworks.com/radar/how-to-byor">FAQs</a> for possible solutions.'
+  message = "Mist. Leider konnten wir Deine Google Tabellen Daten nicht finden. "
+  var faqMessage = 'Schau bitte in den <a href="https://frankgoossens.dev.acsr.de/radar/how-to-guez">FAQs</a> nach möglichen Lösungen.'
   if (exception instanceof MalformedDataError) {
     message = message.concat(exception.message)
   } else if (exception instanceof SheetNotFoundError) {
@@ -356,7 +356,7 @@ function plotUnauthorizedErrorMessage () {
 
   plotLogo(content)
 
-  var bannerText = '<div><h1>Build your own radar</h1></div>'
+  var bannerText = '<div><h1>Gestalte unsere Zukunft</h1></div>'
 
   plotBanner(content, bannerText)
 
@@ -364,8 +364,8 @@ function plotUnauthorizedErrorMessage () {
   const currentUser = GoogleAuth.geEmail()
   let homePageURL = window.location.protocol + '//' + window.location.hostname
   homePageURL += (window.location.port === '' ? '' : ':' + window.location.port)
-  const goBack = '<a href=' + homePageURL + '>GO BACK</a>'
-  const message = `<strong>Oops!</strong> Looks like you are accessing this sheet using <b>${currentUser}</b>, which does not have permission.Try switching to another account.`
+  const goBack = '<a href=' + homePageURL + '>Geh zurück...</a>'
+  const message = `<strong>Mist!</strong> Sieht so aus als ob Du auf diese Tabelle als Benutzer <b>${currentUser}</b>, zugreifst, der keine Zugriffsrechte hat. Versuche bitte einen anderen Benutzerzugang.`
 
   const container = content.append('div').attr('class', 'error-container')
 
